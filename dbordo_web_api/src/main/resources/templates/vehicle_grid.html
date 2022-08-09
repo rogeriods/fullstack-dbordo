@@ -1,0 +1,32 @@
+<!doctype html>
+<html 
+	layout:decorator="layout" 
+	xmlns:th="https://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<div layout:fragment="content">
+	<h3>Cadastro de Veículos</h3>
+	<a href="/veiculo/novo" class="btn btn-primary mb-2">Novo</a>
+	<table id="datatable" class="table">
+	  	<thead>
+	    	<tr>
+	      		<th scope="col">Modelo</th>
+	      		<th scope="col">Placa</th>
+	      		<th scope="col">Último KM</th>
+	    	</tr>
+	  	</thead>
+	  	<tbody>
+	    	<tr th:each="vehicle : ${vehicles}">
+	      		<td>
+	      			<a href="#" th:href="${'/veiculo/edita/' + vehicle.id}">
+						<span th:text="${vehicle.modelo}">Modelo</span>
+					</a>
+	      		</td>
+	      		<td th:text="${vehicle.placa}">Placa</td>
+	      		<td th:text="${vehicle.ultimoKm}">Último Km</td>
+	    	</tr>
+	  	</tbody>
+	</table>
+</div>
+
+</html>

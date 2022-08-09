@@ -1,0 +1,38 @@
+<!doctype html>
+<html 
+	layout:decorator="layout" 
+	xmlns:th="https://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<div layout:fragment="content">
+	<ol class="breadcrumb">
+		<li><a href="#" th:href="${'/veiculo'}">Cadastro Veículos</a></li>
+	</ol>
+	<h3>Veículo (Form)</h3>
+	<p>Campos em (*) são de preenchimento obrigatório.</p>
+	<form th:object="${vehicle}" th:action="@{/veiculo}" method="post">
+		<input type="hidden" th:field="*{id}" />
+  		<div class="form-group">
+    		<label>Modelo *</label>
+    		<input type="text" class="form-control" id="modelo" maxlength="100" required th:field="*{modelo}" />
+  		</div>
+  		<div class="row">
+  			<div class="col-md-8">
+  				<div class="form-group">
+  					<label>Placa *</label>
+    				<input type="text" class="form-control" id="placa" maxlength="10" required th:field="*{placa}" />
+  				</div>
+  			</div>
+  			<div class="col-md-4">
+  				<div class="form-group">
+  					<label>Último KM *</label>
+    				<input type="number" class="form-control" id="ultimoKm" maxlength="100" required
+						   th:field="*{ultimoKm}" />
+  				</div>
+  			</div>
+  		</div>
+  		<button type="submit" class="btn btn-primary">Gravar</button>
+	</form>
+</div>
+
+</html>

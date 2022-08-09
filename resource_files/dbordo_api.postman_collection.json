@@ -1,0 +1,86 @@
+{
+	"info": {
+		"_postman_id": "c7a5d705-3388-41b6-9bcc-101228b81635",
+		"name": "dbordo_api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all opened",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "192.168.0.16:8088/api/historicos",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"16"
+					],
+					"port": "8088",
+					"path": [
+						"api",
+						"historicos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "192.168.0.16:8088/api/historicos/8",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"16"
+					],
+					"port": "8088",
+					"path": [
+						"api",
+						"historicos",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update by id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"kmChegada\": 2010\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "192.168.0.16:8088/api/historicos/2",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"16"
+					],
+					"port": "8088",
+					"path": [
+						"api",
+						"historicos",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

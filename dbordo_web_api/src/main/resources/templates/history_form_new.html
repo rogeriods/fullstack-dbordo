@@ -1,0 +1,67 @@
+<!doctype html>
+<html 
+	layout:decorator="layout" 
+	xmlns:th="https://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<div layout:fragment="content">
+	<ol class="breadcrumb">
+		<li><a href="#" th:href="${'/'}">Painel de Controle</a></li>
+	</ol>
+	<h3>Histórico (Form)</h3>
+	<p>Campos em (*) são de preenchimento obrigatório.</p>
+	<form th:object="${history}" th:action="@{/historico}" method="post">
+		<input type="hidden" th:field="*{id}" />
+  		<div class="row">
+  			<div class="col-md-6">
+  				<div class="form-group">
+  					<label>Veículo *</label>
+  					<select class="form-control" th:field="*{veiculo}" required="required">
+						<option th:each="vehicle : ${vehicles}" 
+							th:value="${vehicle.id}" 
+							th:text="${vehicle.modelo + ' (' + vehicle.placa + ')'}">
+							Veículo
+						</option>
+					</select>
+  				</div>
+  			</div>
+  			<div class="col-md-3">
+  				<div class="form-group">
+  					<label>Data Saída *</label>
+    				<input type="date" class="form-control" id="dataSida" required th:field="*{dataSaida}" />
+  				</div>
+  			</div>
+  			<div class="col-md-3">
+  				<div class="form-group">
+  					<label>Hora Saída *</label>
+    				<input type="time" class="form-control" id="horaSaida" required th:field="*{horaSaida}" />
+  				</div>
+  			</div>
+  		</div>
+  		<div class="form-group">
+  			<label>Destino *</label>
+    		<input type="text" class="form-control" id="placa" required th:field="*{destino}" />
+  		</div>
+  		<div class="row">
+  			<div class="col-md-6">
+  				<div class="form-group">
+  					<label>Condutor *</label>
+    				<input type="text" class="form-control" id="condutor" maxlength="100" required th:field="*{condutor}" />
+  				</div>
+  			</div>
+  			<div class="col-md-6">
+  				<div class="form-group">
+  					<label>Liberado Por *</label>
+    				<select class="form-control" th:field="*{liberadoPor}" required="required">
+						<option value="José Carlos">José Carlos</option>
+						<option value="Estevam">Estevam</option>
+						<option value="Alexandre Roger">Alexandre Roger</option>
+					</select>
+  				</div>
+  			</div>
+  		</div>
+  		<button type="submit" class="btn btn-primary">Gravar</button>
+	</form>
+</div>
+
+</html>

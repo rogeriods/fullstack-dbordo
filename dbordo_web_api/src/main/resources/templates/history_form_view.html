@@ -1,0 +1,96 @@
+<!doctype html>
+<html 
+	layout:decorator="layout" 
+	xmlns:th="https://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<div layout:fragment="content">
+	<ol class="breadcrumb">
+		<li><a href="#" th:href="${'/'}">Painel de Controle</a></li>
+	</ol>
+	<h3>Histórico (View)</h3>
+	<p>Para alterar qualquer informação já registrada solicite ao TI.</p>
+	<form th:object="${history}" th:action="@{/historico}" method="post">
+		<input type="hidden" th:field="*{id}" />
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label>Veículo</label>
+					<select class="form-control" th:field="*{veiculo}" required="required" disabled>
+						<option th:value="${vehicle.id}" th:text="${vehicle.modelo + ' (' + vehicle.placa + ')'}">
+							Modelo/Placa
+						</option>
+					</select>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label>Destino *</label>
+					<input type="text" class="form-control" id="placa" required th:field="*{destino}" disabled />
+				</div>
+			</div>
+		</div>
+		<div class="row">
+  			<div class="col-md-6">
+  				<div class="form-group">
+  					<label>Condutor *</label>
+    				<input type="text" class="form-control" id="condutor" maxlength="100" required
+						   th:field="*{condutor}" disabled />
+  				</div>
+  			</div>
+  			<div class="col-md-6">
+  				<div class="form-group">
+  					<label>Liberado Por *</label>
+    				<select class="form-control" th:field="*{liberadoPor}" required="required" disabled>
+						<option value="José Carlos">José Carlos</option>
+						<option value="Estevam">Estevam</option>
+						<option value="Alexandre Roger">Alexandre Roger</option>
+					</select>
+  				</div>
+  			</div>
+  		</div>
+  		<div class="row">
+  			<div class="col-md-4">
+  				<div class="form-group">
+  					<label>Data Saída *</label>
+    				<input type="date" class="form-control" id="dataSida" required th:field="*{dataSaida}" disabled />
+  				</div>
+  			</div>
+  			<div class="col-md-4">
+  				<div class="form-group">
+  					<label>Hora Saída *</label>
+    				<input type="time" class="form-control" id="horaSaida" required th:field="*{horaSaida}" disabled />
+  				</div>
+  			</div>
+  			<div class="col-md-4">
+  				<div class="form-group">
+  					<label>Km Saída *</label>
+    				<input type="number" class="form-control" id="kmSaida" required th:field="*{kmSaida}" disabled />
+  				</div>
+  			</div>
+  		</div>
+  		<div class="row">
+  			<div class="col-md-4">
+  				<div class="form-group">
+  					<label>Data Chegada</label>
+    				<input type="date" class="form-control" id="dataChegada" th:field="*{dataChegada}" disabled />
+  				</div>
+  			</div>
+  			<div class="col-md-4">
+  				<div class="form-group">
+  					<label>Hora Chegada</label>
+    				<input type="time" class="form-control" id="horaChegada" th:field="*{horaChegada}" disabled />
+  				</div>
+  			</div>
+  			<div class="col-md-4">
+  				<div class="form-group">
+  					<label>Km Chegada</label>
+    				<input type="number" class="form-control" id="kmChegada" th:field="*{kmChegada}" disabled />
+  				</div>
+  			</div>
+  		</div>
+		<a href="/" class="btn btn-secondary">Retornar</a>
+	</form>
+</div>
+
+</html>

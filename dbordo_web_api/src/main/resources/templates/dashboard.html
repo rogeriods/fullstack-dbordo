@@ -1,0 +1,45 @@
+<!doctype html>
+<html 
+	layout:decorator="layout" 
+	xmlns:th="https://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<div layout:fragment="content">
+	<h3>Painel de Controle (Dashboard)</h3>
+	<p>Por padrão a listagem exibe somente de veículos em trânsito, para listar todos utilize os filtros ao lado.</p>
+	<div class="row">
+		<div class="col">
+			<a href="/historico/novo" class="btn btn-primary mb-2">Novo</a>
+		</div>
+		<div class="col text-right">
+			<div class="btn-group" role="group">
+				<a href="/" class="btn btn-outline-secondary">Em Trânsito</a>
+				<a href="/historico/todos" class="btn btn-outline-secondary">Todos</a>
+			</div>
+		</div>
+	</div>
+	<table id="datatable" class="table">
+	  	<thead>
+	    	<tr>
+	      		<th scope="col">Data/Hora Saída</th>
+	      		<th scope="col">Condutor</th>
+	      		<th scope="col">Veículo</th>
+	      		<th scope="col">Destino</th>
+	    	</tr>
+	  	</thead>
+	  	<tbody>
+	    	<tr th:each="history : ${historical}">
+	    		<td th:text="${#dates.format(history.dataSaida, 'dd/MM/yyyy')} + ' ' + ${#dates.format(history.horaSaida, 'HH:mm')}">Data Hora Saída</td>
+	      		<td>
+	      			<a href="#" th:href="${'/historico/view/' + history.id}">
+						<span th:text="${history.condutor}">Condutor</span>
+					</a>
+	      		</td>
+	      		<td th:text="${history.veiculo.modelo}">Placa</td>
+	      		<td th:text="${history.destino}">Destino</td>
+	    	</tr>
+	  	</tbody>
+	</table>
+</div>
+
+</html>
